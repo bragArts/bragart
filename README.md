@@ -1,9 +1,7 @@
-Simple
-================
-A clone of [Obtvse](http://github.com/NateW/obtvse).
+## bragArt
+A clone of [Simple](https://github.com/orf/simple).
 
-About
-============
+### About
 The point of Simple is to be simple. The blog is 1 file (excluding resources) with a few simple pure-python dependancies (Flask, Sqlalchemy, Markdown), it doesn't require a database server, has a small footprint and is very fast (Can easily handle 300+ requests per second).
 
 Features
@@ -36,15 +34,4 @@ This will start 4 gunicorn workers serving Simple. You can then use nginx or apa
 Example
 ============
 You can see my blog running this software [here](http://tomforb.es/simple).
-
-Screenshots
-===========
-![Admin](http://i.imgur.com/M4i0ahm.png)
-
-![Draft](http://i.imgur.com/KkGtlTx.png)
-
-![Live](http://i.imgur.com/tsiSsED.png)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/orf/simple/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
