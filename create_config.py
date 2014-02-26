@@ -68,8 +68,8 @@ def input_password(*args, **kwargs):
 
 print "%s a Simple config file. Please answer some questions:" % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
-    input_with_default("POSTS_PER_PAGE", "Posts per page", 5, _type=int),
-    input_with_default("POST_CONTENT_ON_HOMEPAGE", "Show the post content on the homepage",
+    input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
+    input_with_default("POST_CONTENT_ON_HOMEPAGE", "Show projects on the homepage",
                        "y", lambda v: v.lower()[0] == "y"),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
     input_password("ADMIN_PASSWORD", "Admin password", "password"),
@@ -77,9 +77,9 @@ SETTINGS = (
     input_with_default("SQLALCHEMY_DATABASE_URI", "Database URI", "sqlite:///simple.db"),
     input_with_default("GITHUB_USERNAME", "Github Username", ""),
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
-    input_with_default("BLOG_TITLE", "Blog title", ""),
-    input_with_default("BLOG_TAGLINE", "Blog tagline", ""),
-    input_with_default("BLOG_URL", "Blog URL (e.g. /blog)", "/"),
+    input_with_default("BLOG_TITLE", "Portfolio title", ""),
+    input_with_default("BLOG_TAGLINE", "Portfolio tagline", ""),
+    input_with_default("BLOG_URL", "Portfolio root URL (e.g. /blog)", "/"),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
