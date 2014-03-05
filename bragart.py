@@ -1,4 +1,4 @@
-""" simple """
+""" bragart portfolio app """
 
 # python imports
 import re
