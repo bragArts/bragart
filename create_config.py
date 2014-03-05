@@ -66,7 +66,7 @@ def input_password(*args, **kwargs):
     return name, generate_password_hash(response)
 
 
-print "%s a Simple config file. Please answer some questions:" % ("Updating" if "--update" in sys.argv else "Generating")
+print "%s a config file for your portfolio. Change these settings to cutomize." % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
     input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
     input_with_default("POST_CONTENT_ON_HOMEPAGE", "Show projects on the homepage",
