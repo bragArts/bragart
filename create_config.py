@@ -83,7 +83,6 @@ SETTINGS = (
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
-    input_with_default("DISQUS_SHORTNAME", "Disqus Shortname", ""),
     input_with_default("USE_ADDTOANY", "Enable AddToAny integration", "y", lambda v: v.lower()[0] == "y"),
     input_with_default("USE_SUBTOME", "Enable SubToMe integration", "n", lambda v: v.lower()[0] == "y"),
 )

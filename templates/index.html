@@ -27,8 +27,8 @@
           </div> <!--end row-fluid-->
     </div> <!--end container-->
 
-
-    <ul class="pager">
+    <!--KLM need to decide on how to paginate...-->
+    <!--<ul class="pager">
         {% if current_page > 0 %}
             <li class="previous">
                 <a href="{{ url_for("index", page=current_page - 1) }}">&larr; Previous</a>
@@ -40,5 +40,5 @@
                 <a href="{{ url_for("index", page=current_page + 1) }}">Next  &rarr;</a>
             </li>
         {% endif %}
-    </ul>
+    </ul>-->
 {% endblock %}
