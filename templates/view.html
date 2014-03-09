@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}<title>{{ post.title }} - {{ config.SITE_TITLE }}</title>{% endblock %}
+{% block title %}<title>{{ config.SITE_TITLE }}: {{ post.title }}</title>{% endblock %}
 
 {% block head %}
     <script type="text/javascript">
@@ -10,30 +10,15 @@
     </script>
 {% endblock %}
 
-{% block sidebar %}
-    {% if is_admin %}
-        <br />
-        <li>
-            <p>
-                <a  href="{{ url_for('edit', post_id=post.id) }}">Edit post</a>
-            </p>
-        </li>
-    {% endif %}
-{% endblock %}
-
 {% block content %}
-    <section id="post-{{ post.id }}">
-        <div class="post_container">
-            <div class="post_header">
-                <h1>{{ post.title }}</h1>
-            </div>
-            <br/>
-            {{ post.render_content()|safe }}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" id="post-{{ post.id }}">
+              <h1>{{ post.title }}</h1>
+              {% if is_admin %}<button type="button" class="btn btn-primary btn-sm" href="{{ url_for('edit', post_id=post.id) }}">Edit</button>{% endif %}
+              <br/>
+                {{ post.render_content()|safe }}
         </div>
-
-        <br/>
-        <a class="btn btn-inverse" href="{{ url_for('index', page=pid) }}">Back to Blog</a>
-        <br/>
-
-    </section>
+      </div>
+    </div>
 {% endblock %}
