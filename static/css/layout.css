@@ -1,18 +1,3 @@
-body {
-    background: #fff;
-    color: #222;
-}
-
-time {
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 12px;
-}
-
-
-.container-fluid,
-.row-fluid { height: inherit; }
-
 .full_post {
     border-bottom: 1px solid #ddd;
     padding: 26px 0 40px 50px;
@@ -25,56 +10,6 @@ h1,
     font-size: 30px; }
 
 
-h1, h2, h3, h4, h5 {
-    font-weight: 900;
-    word-wrap: break-word;
-    line-height: 1.3em;
-}
-
-.post_container > h1,h2,h3,h4,h5{
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-}
-
-h1 {
-    font-weight: 900;
-    font-size: 30px;
-}
-p {
-    color: #1d1d1d; }
-
-a,
-a:visited
-a:active{
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ddd;
-}
-
-a:hover {
-    color: red;
-    text-decoration: none;
-}
-
-ul {
-    list-style-type: none; }
-
-a:hover {
-    color: red; }
-
-
-textarea {
-    font-family: 'Lato', Helvetica, sans-serif;
-}
-
-.post_title {
-    line-height: 1.2em;
-}
-
-img {
-    max-width: 100%;
-}
-
 code.prettyprint {
     line-height: 1.2em;
 }
@@ -85,26 +20,6 @@ code {
     padding: 20px;
     margin: 20px;
     display: block; }
-
-
-header span {
-    color: #888;
-    font-weight: 500; }
-header span.powered-by {
-    font-size: 11px;
-}
-header ul {
-    padding: 0;
-    margin: 50px 0; }
-header li {
-    margin: 0 0 3px 0; }
-header li a {
-    padding: 2px 0;
-    color: #888;
-    border-bottom: 2px solid #eee; }
-header li a:hover {
-    border-color: #777;
-    color: #444; }
 
 #admin textarea, #admin pre {
     margin: 0;

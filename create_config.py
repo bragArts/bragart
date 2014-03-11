@@ -1,4 +1,4 @@
-""" utility for generating a configuration file for a simple blog """
+""" utility for generating a configuration file for a bragart portfolio """
 from werkzeug.security import generate_password_hash
 from os import urandom
 from base64 import b32encode
@@ -66,24 +66,21 @@ def input_password(*args, **kwargs):
     return name, generate_password_hash(response)
 
 
-print "%s a Simple config file. Please answer some questions:" % ("Updating" if "--update" in sys.argv else "Generating")
+print "%s a config file for your portfolio. Change these settings to cutomize." % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
-    input_with_default("POSTS_PER_PAGE", "Posts per page", 5, _type=int),
-    input_with_default("POST_CONTENT_ON_HOMEPAGE", "Show the post content on the homepage",
-                       "y", lambda v: v.lower()[0] == "y"),
+    input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
     input_password("ADMIN_PASSWORD", "Admin password", "password"),
     input_with_default("ANALYTICS_ID", "Google analytics ID", ""),
-    input_with_default("SQLALCHEMY_DATABASE_URI", "Database URI", "sqlite:///simple.db"),
+    input_with_default("SQLALCHEMY_DATABASE_URI", "Database URI", "sqlite:///bragart.db"),
     input_with_default("GITHUB_USERNAME", "Github Username", ""),
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
-    input_with_default("BLOG_TITLE", "Blog title", ""),
-    input_with_default("BLOG_TAGLINE", "Blog tagline", ""),
-    input_with_default("BLOG_URL", "Blog URL (e.g. /blog)", "/"),
+    input_with_default("SITE_TITLE", "Portfolio title", ""),
+    input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
+    input_with_default("SITE_URL", "Portfolio root URL (e.g. /blog)", "/"),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
-    input_with_default("DISQUS_SHORTNAME", "Disqus Shortname", ""),
     input_with_default("USE_ADDTOANY", "Enable AddToAny integration", "y", lambda v: v.lower()[0] == "y"),
     input_with_default("USE_SUBTOME", "Enable SubToMe integration", "n", lambda v: v.lower()[0] == "y"),
 )
