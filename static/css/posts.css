@@ -16,9 +16,7 @@ input, textarea {
   outline: none;
   background: none; }
 
-body {
-  background: #fff;
-  color: #222; }
+
 
 body, textarea, pre, input {
     font-family: 'Lato', Helvetica, sans-serif;
@@ -37,8 +35,6 @@ h1,
     font-weight: 900;
     font-size: 30px; }
 
-p {
-  color: #1d1d1d; }
 
 code.prettyprint {
     line-height: 1.2em;
@@ -59,9 +55,6 @@ a:active {
     color: #000;
     text-decoration: none;
     border-bottom: 1px solid #ddd; }
-
-a:hover {
-  color: red; }
 
 header {
   width: 162px;
@@ -90,16 +83,7 @@ header li a:hover {
   border-color: #777;
   color: #444; }
 
-#container {
-  margin-left: 243px;
-  position: relative; }
-#container time {
-  display: block;
-  padding: 20px 0 20px 50px;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 12px;
-  border-bottom: 1px solid #ddd; }
+
 
 #content section {
   padding: 26px 0 40px 50px;
@@ -252,14 +236,7 @@ label {
   text-align: center;
   padding: 6px 0; }
 
-#admin {
-  width: 808px;
-  margin: 0 auto;
-  position: relative; }
-
-
 #admin #drafts {
-  float: left;
   border: 4px solid #000;
   border-top: none;
   background: #fff;
@@ -275,8 +252,7 @@ label {
   font-weight: 400;
   margin: 0;
   border-bottom: 1px solid #ddd; }
-#admin #published {
-  float: right; }
+
 #admin #published h2 {
   color: #999; }
 #admin #published h2 a {
@@ -293,7 +269,6 @@ label {
   line-height: 2.7em;
   margin: 5px 0 0; }
 #admin .col {
-  width: 360px;
   padding: 20px; }
 #admin .col h2 a {
   background: #999; }

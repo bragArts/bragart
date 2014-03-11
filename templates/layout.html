@@ -40,8 +40,8 @@
         {% block head %}{% endblock %}
     </head>
     <body onload="prettyPrint()">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+      <div class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -57,7 +57,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-		<div class="navbar-right">
+		  <div class="navbar-right hidden-xs">
             {% if config.TWITTER_HANDLE %}
         	  <a href="https://twitter.com/{{ config.TWITTER_HANDLE }}/">
               <img alt="twitter" src="{{ url_for('static', filename='img/twitter.png') }}"/></a>
@@ -77,8 +77,23 @@
               <img src="{{ url_for('static', filename='img/github.png') }}" alt="github"/></a>
             {% endif %}
             {% if is_admin %}
-            <a href="{{ url_for('admin') }}">Admin</a>
+            <button type="button" class="btn btn-primary btn-sm" href="{{ url_for('admin') }}">Admin</button>
             {% endif %}
+        </div>
+        <div class="navbar-right visible-xs">
+            {% if config.TWITTER_HANDLE %}
+        	  <a href="https://twitter.com/{{ config.TWITTER_HANDLE }}/">Twitter</a>
+            {% endif %}
+            {% if config.GOOGLE_PLUS_PROFILE %}
+            <a href="https://plus.google.com/{{ config.GOOGLE_PLUS_PROFILE }}/posts">G+</a>
+            {% endif %}
+            <a href="">Linked in</a> <!--KLM need to add support for linkedin-->
+            {% if config.CONTACT_EMAIL %}
+            <a href="mailto:{{ config.CONTACT_EMAIL }}?subject:Howdy">Email</a>
+            {% endif %}
+            {% if config.GITHUB_USERNAME %}
+            <a href="https://github.com/{{ config.GITHUB_USERNAME }}/">Github</a>
+            {% endif %}s
         </div>
         </div><!--/.navbar-collapse -->
             
