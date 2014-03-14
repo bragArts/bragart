@@ -77,7 +77,7 @@
               <img src="{{ url_for('static', filename='img/github.png') }}" alt="github"/></a>
             {% endif %}
             {% if is_admin %}
-            <button type="button" class="btn btn-primary btn-sm" href="{{ url_for('admin') }}">Admin</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='{{ url_for('admin') }}'">Admin</button>
             {% endif %}
         </div>
         <div class="navbar-right visible-xs">
