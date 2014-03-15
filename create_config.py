@@ -74,6 +74,7 @@ SETTINGS = (
     input_with_default("ANALYTICS_ID", "Google analytics ID", ""),
     input_with_default("SQLALCHEMY_DATABASE_URI", "Database URI", "sqlite:///bragart.db"),
     input_with_default("GITHUB_USERNAME", "Github Username", ""),
+    input_with_default("LINKEDIN_PROFILE_URL", "LinkedIn Profile URL", ""),
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
     input_with_default("SITE_TITLE", "Portfolio title", ""),
     input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
