@@ -49,13 +49,6 @@ div.bottom_right {
     width: 350px;
 }
 
-a,
-a:visited
-a:active {
-    color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ddd; }
-
 header {
   width: 162px;
   border-right: 1px solid #DDD;
@@ -144,47 +137,7 @@ fieldset.markdown {
     left: 15%;
 }
 
-#publish-bar {
-  position: fixed;
-  top: 15%;
-  left: 0;
-  background: #ffffff;
-  color: #000000;
-  width: 15%;
-  text-align: center;
-  padding: 20px 0; }
 
-#publish-bar label {
-    color: #000000;
-}
-
-#publish-bar .contain {
-  margin: 0 5%;
-  width: 80%; }
-
-#publish-bar .contain div {
-    margin: 5% 5%;
-}
-
-#publish-bar input[type=submit], #publish-bar a, .button {
-  display: inline-block;
-  background: #000;
-  padding: 10px;
-  font-weight: bold;
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; }
-
-.button.secondary {
-  padding: 0 5px;
-  background: #aaa;
-  font-size: 12px; }
-
-#publish-bar input[type=submit]:hover, #publish-bar a:hover, .col h1 a:hover, .col h2 a:hover, .button:hover, .button.secondary:hover {
-  background: red;
-  color: #fff; }
 
 .button.space-top {
   margin-top: 100px; }
