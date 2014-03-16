@@ -66,8 +66,10 @@
             <a href="https://plus.google.com/{{ config.GOOGLE_PLUS_PROFILE }}/posts">
               <img src="{{ url_for('static', filename='img/gplus.png') }}" alt="google plus"/></a>
             {% endif %}
-            <a href="">
-              <img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="linked in"/></a> <!--KLM need to add support for linkedin-->
+            {% if config.LINKEDIN_PROFILE_URL %}
+            <a href="https://www.linkedin.com/in/{{ config.LINKEDIN_PROFILE_URL }}/">
+              <img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="linked in"/></a>
+            {% endif %}
             {% if config.CONTACT_EMAIL %}
             <a href="mailto:{{ config.CONTACT_EMAIL }}?subject:Howdy">
               <img src="{{ url_for('static', filename='img/email.png') }}" alt="email"/></a>
