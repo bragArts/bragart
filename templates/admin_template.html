@@ -18,10 +18,54 @@
       <title>Admin dashboard</title>
     {% block css %}{% endblock %}
     {% block head %}{% endblock %}
+      <!--KLM need to move to standalone file-->
+      <style>
+        body {
+          background-color:#f3f3f3; 
+        }
+        .container .navbar-right p#greeting{
+          color:white;
+          position:relative;
+          top:8px;
+          padding-right:30px;
+        }
+        .admin-box {
+          background-color:#ffffff;
+          -webkit-box-shadow:rgba(0, 0, 0, 0.0392157) 0 1px 1px;
+          border:1px solid #E5E5E5;
+          box-shadow:rgba(0, 0, 0, 0.0392157) 0 1px 1px;
+          margin-bottom:20px;
+          padding:3px 8px;
+        }
+        textarea.admin-box {
+          width:100%;
+          max-width:100%;
+          overflow:hidden;
+          text-align:left;
+          margin-top:20px;
+        }
+        textarea.admin-box#post_title {
+          font-size:1.8em;
+          font-weight:400;
+          height:50px;
+          max-height:50px;
+        }
+      </style>
 </head>
 
 <body class="admin">
 <div id="admin">
+    <nav class="navbar navbar-inverse" role="toolbar">
+      <div class="container">
+         <a class="navbar-brand" href="{{ url_for("admin") }}">Admin Dashboard</a>
+        <div class="navbar-right">
+          <p><a class="btn btn-default" href="{{ url_for("admin") }}">Visit site</a></p>
+        </div>
+        <div class="navbar-right">
+          <p id="greeting">Why hello, {{ adminName }}!</p>
+        </div>
+      </div>
+    </nav>
     {% block content %}{% endblock %}
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
