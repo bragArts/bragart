@@ -212,7 +212,7 @@ def edit(post_id):
         abort(404)
 
     if request.method == "GET":
-        return render_template("edit.html", post=post)
+        return render_template("edit.html", post=post, adminName=app.config["ADMIN_USERNAME"])
     else:
         if post.title != request.form.get("post_title", ""):
             post.title = request.form.get("post_title", "")
@@ -261,7 +261,7 @@ def admin():
         .filter_by(draft=True).order_by(Post.created_at.desc()).all()
     posts = db.session.query(Post).filter_by(draft=False)\
         .order_by(Post.created_at.desc()).all()
-    return render_template("admin.html", drafts=drafts, posts=posts)
+    return render_template("admin.html", drafts=drafts, posts=posts, adminName=app.config["ADMIN_USERNAME"]) #Added username for extra friendliness
 
 
 @app.route("/admin/save/<int:post_id>", methods=["POST"])

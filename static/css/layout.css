@@ -31,7 +31,6 @@ code {
 #admin .expandingArea {
     position: relative; }
 #admin .expandingArea > textarea, #admin .expandingArea > pre {
-    background: transparent;
     white-space: pre-wrap;
     word-wrap: break-word; }
 #admin .expandingArea > textarea {
