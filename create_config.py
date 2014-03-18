@@ -66,7 +66,7 @@ def input_password(*args, **kwargs):
     return name, generate_password_hash(response)
 
 
-print "%s a config file for your portfolio. Change these settings to cutomize." % ("Updating" if "--update" in sys.argv else "Generating")
+print "%s a config file for your portfolio. Change these settings to customize." % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
     input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
