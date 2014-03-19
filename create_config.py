@@ -72,7 +72,7 @@ SETTINGS = (
     input_with_default("SITE_GREETING", "Home page greeting", "Why hello there"),
     input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
     input_with_default("SITE_URL", "Portfolio root URL (e.g. /blog)", "/"),
-    input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
+    input_with_default("POSTS_PER_PAGE", "Projects per page", 14, _type=int),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
     input_password("ADMIN_PASSWORD", "Admin password", "password"),
     input_with_default("ANALYTICS_ID", "Google analytics ID", ""),
