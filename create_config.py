@@ -68,6 +68,10 @@ def input_password(*args, **kwargs):
 
 print "%s a config file for your portfolio. Change these settings to customize." % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
+    input_with_default("SITE_TITLE", "Portfolio title", ""),
+    input_with_default("SITE_GREETING", "Home page greeting", "Why hello there"),
+    input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
+    input_with_default("SITE_URL", "Portfolio root URL (e.g. /blog)", "/"),
     input_with_default("POSTS_PER_PAGE", "Projects per page", 5, _type=int),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
     input_password("ADMIN_PASSWORD", "Admin password", "password"),
@@ -76,9 +80,6 @@ SETTINGS = (
     input_with_default("GITHUB_USERNAME", "Github Username", ""),
     input_with_default("LINKEDIN_PROFILE_URL", "LinkedIn Profile URL", ""),
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
-    input_with_default("SITE_TITLE", "Portfolio title", ""),
-    input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
-    input_with_default("SITE_URL", "Portfolio root URL (e.g. /blog)", "/"),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
