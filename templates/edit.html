@@ -113,8 +113,7 @@
             <form accept-charset="UTF-8" action="" class="edit_post" id="edit_post" method="post">
                 <div class="row">
                   <div class="col-md-9">
-                    <h2 style="display:inline-block">Edit project</h2>
-                    <button style="display:inline-block; margin-left:20px;" onclick="$('#edit_post').submit()" class="btn btn-primary" role="button">Save</button>
+                    <h2>Edit project</h2>
                     <pre><span></span><br></pre>
                     <!--begin post header-->
                     <div class="post_header">
@@ -135,33 +134,45 @@
                   </div>
                   <!--end col-md-9-->
                   <div class="col-md-3">
-                    <div class="admin-box">
+                    <div class="admin-box" id="admin-sidebar">
                       <h3>Status: {% if post.draft %}Draft{% else %}Published{% endif %}</h3>
-                        <label id="auto-save" for="post_draft">Draft</label>
-                        <input name="post_draft" type="hidden" value="0" />
-                        <input id="post_draft" name="post_draft" type="checkbox" value="1" {% if post.draft %}checked{% endif %} />
-                      {% if post.draft %}
-                      <a class="btn btn-default">Publish</a><!--KLM need publish support-->
-                      {% else %}
-                      <a class="btn btn-default">Return to draft</a><!--need draft support-->
-                      {% endif %}
-                      {% if post.draft %}
-                      <a class="btn btn-default" href="{{ url_for('preview', post_id=post.id) }}" 
-                           target="previewPage" onclick="issueSaveAjax({{ post.id }})">Preview</a>
-                      {% else %}
-                      <a class="btn btn-default" href="{{  url_for('view_post_slug', slug=post.slug) }}" target="_blank">View live</a>
-                      {% endif %}
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div id="admin-sidebar-draft">
+                          <label id="auto-save" for="post_draft">Draft</label>
+                          <input name="post_draft" type="hidden" value="0" />
+                          <input id="post_draft" name="post_draft" type="checkbox" value="1" {% if post.draft %}checked{% endif %} />
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <button onclick="$('#edit_post').submit()" class="btn btn-primary" role="button">Save</button>
+                        </div>
+                      </div>
                       <br/>
-                      <a href="{{ url_for('delete', post_id=post.id, next="admin") }}" class="btn btn-default" 
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div id="admin-sidebar-view">
+                          {% if post.draft %}
+                          <a class="btn btn-default" href="{{ url_for('preview', post_id=post.id) }}" 
+                               target="previewPage" onclick="issueSaveAjax({{ post.id }})">Preview</a>
+                          {% else %}
+                          <a class="btn btn-default" href="{{  url_for('view_post_slug', slug=post.slug) }}" target="_blank">View live</a>
+                          {% endif %}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                           <a href="{{ url_for('delete', post_id=post.id, next="admin") }}" class="btn btn-default" 
                                 style="color:red" role="button">Delete</a>
-                      <a href="#markdown-help" role="button" class="btn" data-toggle="modal">
-                                <img src="{{ url_for('static', filename='39x24-solid.png') }}"></a>
+                        </div>
+                      </div>
                       <br/>
                       <div id="drop-upload" class=" well well-small" style="word-wrap: break-word;">
                                 Drag files here to upload. Click to insert.
                                 <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
                                 <div id="upload_list"></div>
-                              </div>
+                      </div>
+                      <a href="#markdown-help" role="button" class="btn" data-toggle="modal">
+                                <img src="{{ url_for('static', filename='39x24-solid.png') }}"></a>
                     </div>
                     <!--end admin-box-->
                   </div>

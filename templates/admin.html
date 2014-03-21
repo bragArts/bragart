@@ -1,7 +1,6 @@
 {% extends "admin_template.html" %}
 
 {% block css %}
-<link href="{{ url_for('static', filename='css/_normalize.css') }}" type="text/css" media="screen" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/posts.css') }}" type="text/css" media="screen" rel="stylesheet">
 {% endblock %}
 
@@ -10,7 +9,7 @@
   <div class="row">
     <div class="col-md-6">
       <div id="drafts" class="col">
-          <h1>Drafts <a href="{{ url_for('new_post') }}" class="button">New draft</a></h1>
+          <h1>Drafts <a href="{{ url_for('new_post') }}" class="btn btn-primary">New draft</a></h1>
           <form action="{{ url_for('new_post') }}" method="POST">
               <input name="title" id="post_title" type="text" size=30 placeholder="Start typing an idea here">
           </form>
@@ -28,11 +27,9 @@
           </ul>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-6">
-        <div id="published" class="col">
-          <h2>Published <a href="{{ url_for('index') }}" class="button">Home</a></h2>
+        <div id="published" class="col admin-box">
+          <h1>Published <a href="{{ url_for('index') }}" class="btn btn-primary">Home</a></h1>
           <ul>
               {% for post in posts %}
                   <li id="post-{{ post.id }}">
