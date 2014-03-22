@@ -53,9 +53,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url_for('index') }}">Work</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="{% block work %}{% endblock %}"><a href="{{ url_for('index') }}">Work</a></li>
+            <li class="{% block about %}{% endblock %}"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="{% block resume %}{% endblock %}"><a href="{{ url_for('resume') }}">Resume</a></li>
           </ul>
 		  <div class="navbar-right hidden-xs">
             {% if config.TWITTER_HANDLE %}
@@ -69,6 +69,10 @@
             {% if config.LINKEDIN_PROFILE_URL %}
             <a href="http://{{ config.LINKEDIN_PROFILE_URL }}">
               <img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="linked in"/></a>
+            {% endif %}
+            {% if config.FACEBOOK_PROFILE_URL %}
+            <a href="http://{{ config.FACEBOOK_PROFILE_URL }}">
+              <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="facebook"/></a>
             {% endif %}
             {% if config.CONTACT_EMAIL %}
             <a href="mailto:{{ config.CONTACT_EMAIL }}?subject:Howdy">

@@ -158,6 +158,16 @@ def index():
                            is_more=there_is_more, 
                            current_page=page, 
                            is_admin=is_admin())
+  
+@app.route("/about")
+def about():
+    page = request.args.get("page", 0, type=int)
+    return render_template("about.html", current_page=page, is_admin=is_admin())
+  
+@app.route("/resume")
+def resume():
+    page = request.args.get("page", 0, type=int)
+    return render_template("resume.html", current_page=page, is_admin=is_admin())
 
 @app.errorhandler(404)
 def page_not_found(e):
