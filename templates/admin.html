@@ -29,12 +29,12 @@
     </div>
     <div class="col-md-6">
         <div id="published" class="col admin-box">
-          <h1>Published</h1>
+          <h1>Published </h1>
           <ul>
               {% for post in posts %}
                   <li id="post-{{ post.id }}">
                       <h3>
-                        <a href="{{ url_for('edit', post_id=post.id) }}">{{ post.title }}</a> | {{ post.created_at }} <!--KLM need to figure out how to cut to date + seconds only-->
+                        <a href="{{ url_for('edit', post_id=post.id) }}">{{ post.title }}</a> | {{ post.created_at.date() }} <!--KLM need to figure out how to cut to date + seconds only-->
                               <span class="links">
                                   <a href="{{ url_for('view_post_slug', slug=post.slug) }}" class="admin-view">view</a>
                                   <a href="{{ url_for('delete', post_id=post.id) }}" class="admin-delete" data-confirm="Are you sure?"
