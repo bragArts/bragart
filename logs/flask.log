@@ -1,0 +1,23 @@
+Exception on /static/uploads/resume.pdf [GET]
+Traceback (most recent call last):
+  File "/home/action/.local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/action/.local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/action/.local/lib/python2.7/site-packages/flask/app.py", line 1370, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/home/action/.local/lib/python2.7/site-packages/flask/app.py", line 1330, in handle_http_exception
+    return handler(e)
+  File "bragart.py", line 183, in page_not_found
+    return render_template('404.html', now=datetime.datetime.now(), is_admin=is_admin()), 404
+  File "/home/action/.local/lib/python2.7/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/action/.local/lib/python2.7/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/action/.local/lib/python2.7/site-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/action/.local/lib/python2.7/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/action/bragart/templates/layout.html", line 58, in template
+    <li class="{% block resume %}{% endblock %}"><a href="{{ filename='uploads/resume.pdf') }}">Resume</a></li>
+TemplateSyntaxError: expected token 'end of print statement', got '='

@@ -2,13 +2,6 @@
 
 {% block title %}<title>{{ config.SITE_TITLE  }}</title>{% endblock %}
 
-{% block about %}active{% endblock %}
+{% block resume %}active{% endblock %}
 
-{% block content %}
-    <div class="jumbotron">
-      <div class="container">
-      	<h1>Resume Goes Here</h1>
-        <p>{{ config.SITE_TAGLINE }}</p>
-      </div>
-    </div>
-{% endblock %}
+{% block content %}<embed src="../resume.pdf" width="500" height="375">{% endblock %}
