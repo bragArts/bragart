@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div id="drafts" class="col">
+      <div id="drafts" class="col admin-box">
           <h1>Drafts <a href="{{ url_for('new_post') }}" class="btn btn-primary">New draft</a></h1>
           <form action="{{ url_for('new_post') }}" method="POST">
               <input name="title" id="post_title" type="text" size=30 placeholder="Start typing an idea here">
@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-6">
         <div id="published" class="col admin-box">
-          <h1>Published <a href="{{ url_for('index') }}" class="btn btn-primary">Home</a></h1>
+          <h1>Published</h1>
           <ul>
               {% for post in posts %}
                   <li id="post-{{ post.id }}">
