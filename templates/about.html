@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}<title>{{ config.SITE_TITLE  }}</title>{% endblock %}
+
+{% block about %}active{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+      <div class="container">
+      	<h1>About Me</h1>
+        <p>{{ config.SITE_TAGLINE }}</p>
+      </div>
+    </div>
+{% endblock %}
