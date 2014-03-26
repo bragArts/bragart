@@ -30,41 +30,41 @@
             }
 
             $(document).ready(function(){
+                console.log('doc ready');
                 $("#upload_list").on('click', '.uploadUrl', function(ev){
+                  console.log('clicked!');
                     $('#post_content').insertAtCaret('![](' + $(this).attr('href') + ')');
                     ev.preventDefault();
                 })
             })
 
-             $.fn.extend({
-                insertAtCaret: function(myValue){
-                    var obj;
-                    if( typeof this[0].name !='undefined' ) obj = this[0];
-                    else obj = this;
-
-                    if ($.browser.msie) {
-                        obj.focus();
-                        sel = document.selection.createRange();
-                        sel.text = myValue;
-                        obj.focus();
-                    }else if ($.browser.mozilla || $.browser.webkit) {
-                        var startPos = obj.selectionStart;
-                        var endPos = obj.selectionEnd;
-                        var scrollTop = obj.scrollTop;
-                        obj.value = obj.value.substring(0, startPos)+myValue+obj.value.substring(endPos,obj.value.length);
-                        obj.focus();
-                        obj.selectionStart = startPos + myValue.length;
-                        obj.selectionEnd = startPos + myValue.length;
-                        obj.scrollTop = scrollTop;
-                    } else {
-                        obj.value += myValue;
-                        obj.focus();
-                    }
-                }
-            })
-
-
-
+             jQuery.fn.extend({
+insertAtCaret: function(myValue){
+  return this.each(function(i) {
+    if (document.selection) {
+      //For browsers like Internet Explorer
+      this.focus();
+      sel = document.selection.createRange();
+      sel.text = myValue;
+      this.focus();
+    }
+    else if (this.selectionStart || this.selectionStart == '0') {
+      //For browsers like Firefox and Webkit based
+      var startPos = this.selectionStart;
+      var endPos = this.selectionEnd;
+      var scrollTop = this.scrollTop;
+      this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+      this.focus();
+      this.selectionStart = startPos + myValue.length;
+      this.selectionEnd = startPos + myValue.length;
+      this.scrollTop = scrollTop;
+    } else {
+      this.value += myValue;
+      this.focus();
+    }
+  })
+}
+});
 
         </script>
 
