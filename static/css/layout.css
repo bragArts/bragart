@@ -16,7 +16,9 @@ code {
 .thumbnail img {
   max-width:335px;
 }
-
+.col-md-12 img {
+  max-width:980px;
+}
 #admin textarea, #admin pre {
     margin: 0;
     padding: 0;
