@@ -96,6 +96,15 @@ class Post(db.Model):
         cache.set("post_%s" % self.id, text)
         return text
 
+    def render_preview(self):
+        _cached = cache.get("post_%s" % self.id)
+        if _cached is not None:
+            return _cached
+        text = MARKDOWN_PARSER.convert(self.text)
+        preview_text = text[:150] + '...' #limit thumbnail text to 150 char
+        cache.set("post_%s" % self.id, preview_text)
+        return preview_text
+
     def set_content(self, content):
         cache.delete("post_%s" % self.id)
         cache.delete("rss_feed")
