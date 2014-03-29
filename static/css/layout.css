@@ -2,25 +2,23 @@
     border-bottom: 1px solid #ddd;
     padding: 26px 0 40px 50px;
 }
-
 h1,
 .expandingArea.text-title pre,
 .expandingArea.text-title textarea {
     font-weight: 900;
     font-size: 30px; }
-
-
-code.prettyprint {
-    line-height: 1.2em;
-}
-
 code {
     font-size: 13px;
     background: #F2F2F2;
     padding: 20px;
     margin: 20px;
     display: block; }
-
+.thumbnail img {
+  max-width:335px;
+}
+.col-md-12 img {
+  max-width:980px;
+}
 #admin textarea, #admin pre {
     margin: 0;
     padding: 0;
