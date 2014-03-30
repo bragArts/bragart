@@ -4,4 +4,15 @@
 
 {% block resume %}active{% endblock %}
 
-{% block content %}<div style="height: 100%"><iframe src="https://docs.google.com/file/d/0B9gffEn5hcEdUHljOVF1SVAzRnc/preview" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe></div>{% endblock %}
+{% block content %}
+            {% if config.GDOC_RESUME_EMBED_CODE %}
+        	    <div class="iframe-rwd">{{ config.GDOC_RESUME_EMBED_CODE|safe }}</div>
+            {% else %}<div class="jumbotron">
+                         <div class="container">
+                           <h1>Resume Goes Here</h1>
+                         </div>
+                       </div>
+            {% endif %}
+{% endblock %}
+
+
