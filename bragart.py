@@ -87,6 +87,7 @@ class Post(db.Model):
     views = db.Column(db.Integer(), default=0)
     created_at = db.Column(db.DateTime, index=True)
     updated_at = db.Column(db.DateTime)
+    thumbnail = db.Column(db.String(), default="")
 
     def render_content(self):
         _cached = cache.get("post_%s" % self.id)
@@ -106,10 +107,16 @@ class Post(db.Model):
         #return _cached
         preview_text = MARKDOWN_PARSER.convert(self.text)
         preview_text = preview_text[:150] + '...' #limit thumbnail text to 150 char
-        
         preview_text = remove_img_tags(preview_text)
-        cache.set("post_%s" % self.id, preview_text)
+        #cache.set("post_%s" % self.id, preview_text)
         return preview_text
+    
+    def render_thumbnail(self):
+        if self.thumbnail:
+          thumbnailHTML = "<img data-src='{{ url_for('static', filename='img/placeholder-300x200.png') }}' alt='...'>"
+          return thumbnailHTML
+        else:
+          return ""
 
     def set_content(self, content):
         cache.delete("post_%s" % self.id)
