@@ -95,13 +95,19 @@ class Post(db.Model):
         text = MARKDOWN_PARSER.convert(self.text)
         cache.set("post_%s" % self.id, text)
         return text
-
+      
+    #special processing to streamline the text excerpt shown on index.html
     def render_preview(self):
-        _cached = cache.get("post_%s" % self.id)
-        if _cached is not None:
-            return _cached
-        text = MARKDOWN_PARSER.convert(self.text)
-        preview_text = text[:150] + '...' #limit thumbnail text to 150 char
+        def remove_img_tags(data):
+            p = re.compile(r'<img.*?>')
+            return p.sub('', data)
+        #_cached = cache.get("post_%s" % self.id)
+        #if _cached is not None:
+        #return _cached
+        preview_text = MARKDOWN_PARSER.convert(self.text)
+        preview_text = preview_text[:150] + '...' #limit thumbnail text to 150 char
+        
+        preview_text = remove_img_tags(preview_text)
         cache.set("post_%s" % self.id, preview_text)
         return preview_text
 
@@ -167,6 +173,16 @@ def index():
                            is_more=there_is_more, 
                            current_page=page, 
                            is_admin=is_admin())
+  
+@app.route("/about")
+def about():
+    page = request.args.get("page", 0, type=int)
+    return render_template("about.html", current_page=page, is_admin=is_admin())
+  
+@app.route("/resume")
+def resume():
+    page = request.args.get("page", 0, type=int)
+    return render_template("resume.html", current_page=page, is_admin=is_admin())
 
 @app.errorhandler(404)
 def page_not_found(e):

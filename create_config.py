@@ -79,6 +79,8 @@ SETTINGS = (
     input_with_default("SQLALCHEMY_DATABASE_URI", "Database URI", "sqlite:///bragart.db"),
     input_with_default("GITHUB_USERNAME", "Github Username", ""),
     input_with_default("LINKEDIN_PROFILE_URL", "LinkedIn Profile URL", ""),
+    input_with_default("TWITTER_HANDLE", "Twitter Handle", ""),
+    input_with_default("FACEBOOK_PROFILE_URL", "Facebook Profile URL", ""), 
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
