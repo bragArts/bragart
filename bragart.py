@@ -252,6 +252,7 @@ def edit(post_id):
             if post.draft:
                 post.slug = slugify(post.title)
 
+          
         post.set_content(request.form.get("post_content", ""))
         post.updated_at = datetime.datetime.now()
 
@@ -307,6 +308,9 @@ def save_post(post_id):
     if post.title != request.form.get("title", ""):
         post.title = request.form.get("title", "")
         post.slug = slugify(post.title)
+
+    if post.thumbnail != request.form.get("thumbnail", ""):
+      post.thumbnail = request.form.get("thumbnail", "")
     content = request.form.get("content", "")
     content_changed = content != post.get_content()
 
