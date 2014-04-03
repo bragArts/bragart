@@ -147,9 +147,9 @@ textarea.admin-box#post_title {
   float:right;
 }
 .admin-box #upload_list_thumbnail img, 
-.admin-box #upload_list_thumbnail input{
+.admin-box #upload_thumbnail input{
   max-width:100%;
-  padding: 15px 0;
+  padding: 15px 0;it 
 }
 div#drop-upload{
   font-size: 13px;
