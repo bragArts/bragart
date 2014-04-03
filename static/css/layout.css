@@ -59,3 +59,24 @@ code {
     display: block;
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
+/*edit.html styles*/
+div#drop-upload{
+  font-size: 13px;
+  margin-left: 0px;
+  color: #1e2221;
+  width: 100%;
+  padding: 1px;
+}
+div#drop-upload input{
+  font-size: 13px;
+}
+#markdown-help-img{
+  padding-right: 10px;
+  float: left;
+}
+#markdown-help-title{
+  margin: 1px;
+}
+#help-title{
+  margin-left: 35px;
+}
