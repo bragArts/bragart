@@ -40,7 +40,7 @@
                     xhr.onload = function() {
                         console.log(xhr.responseText);
                         var resp = JSON.parse(xhr.responseText);
-                      $("#upload_list_thumbnail").append("<p><a class='uploadUrl' target='_blank' href='" + resp.url + "'><img src='" + resp.url + "' alt='" + resp.name + "'/></a></p>");
+                      $("#upload_list_thumbnail").html("<p><a class='uploadUrl' target='_blank' href='" + resp.url + "'><img src='" + resp.url + "' alt='" + resp.name + "'/></a></p>");
                     };
                     xhr.send(fd);
                 })
@@ -171,7 +171,10 @@
                       <div id="upload-thumbnail">
                           <input type="file" onchange="uploadThumbnail(this.files[0])">
                       </div>
-                      <div id="upload_list_thumbnail"></div>
+                      <div id="upload_list_thumbnail">
+                        <p><a class='uploadUrl' target='_blank' href='{{ post.thumbnail }}'><img src='../{{ post.thumbnail }}' alt='thumbnail'/></a></p>
+                      </div>
+                      
                     </div>
                   </div>
                   <!--end col-md-3-->
