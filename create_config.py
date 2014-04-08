@@ -82,6 +82,7 @@ SETTINGS = (
     input_with_default("TWITTER_HANDLE", "Twitter Handle", ""),
     input_with_default("FACEBOOK_PROFILE_URL", "Facebook Profile URL", ""), 
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
+    input_with_default("GDOC_RESUME_EMBED_CODE", "Google Doc Resume Embed Code", "", 
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
