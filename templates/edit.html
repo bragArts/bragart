@@ -174,7 +174,9 @@
                           <input type="file" onchange="uploadThumbnail(this.files[0])">
                       </div>
                       <div id="upload_list_thumbnail">
+                        {% if post.thumbnail %}
                         <p><a class='uploadUrl' target='_blank' href='{{ post.thumbnail }}'><img src='..{{ post.thumbnail }}' alt='thumbnail'/></a></p>
+                        {% endif %}
                       </div>
                       <span id="post_thumbnail" class="display:none; visibility:hidden"></span>
                       

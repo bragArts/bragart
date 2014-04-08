@@ -87,7 +87,7 @@ class Post(db.Model):
     views = db.Column(db.Integer(), default=0)
     created_at = db.Column(db.DateTime, index=True)
     updated_at = db.Column(db.DateTime)
-    thumbnail = db.Column(db.String(), default="uploads/lupine_Z5T2WAJC.jpg") #testing url..
+    thumbnail = db.Column(db.String(), default="") 
 
     def render_content(self):
         _cached = cache.get("post_%s" % self.id)
