@@ -29,14 +29,27 @@ body {
   border-bottom: 1px solid #ddd; 
   background: none;
   line-height: 45px;}
-#admin #published, #admin #drafts {
+#admin #aboutme form {
+  margin: 20px 0 10px -8px;
+  padding: 0 0 0 20px;
+  border-left: 16px solid darkblue; }
+#admin #aboutme #post_title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd; 
+  background: none;
+  line-height: 45px;}
+#admin #published, #admin #drafts, #admin #aboutme, {
   padding: 20px;   
 }
-#admin #published ul, #admin #drafts ul {
+#admin #published ul, #admin #drafts ul, #admin #aboutme ul, {
   padding:0;
   list-style-type:none;
 }
-#admin #published ul li, #admin #drafts ul li{
+#admin #published ul li, #admin #drafts ul li, #admin #aboutme ul li, {
   border-bottom: 1px solid #ddd;
   padding: 15px;
   position: relative; }
@@ -44,7 +57,7 @@ body {
   color: #999; }
 #admin #published h2 a {
   margin-top: -2px; }
-#admin #published h1, #admin #drafts h1, #admin #published h2, #admin #drafts h2 {
+#admin #published h1, #admin #drafts h1, #admin #aboutme h1, #admin #published h2, #admin #drafts h2, #admin #aboutme h2 {
   position: relative;
   text-transform: uppercase; }
 #admin .col h1 a, #admin .col h2 a {
@@ -146,4 +159,28 @@ textarea.admin-box#post_title {
 #admin-sidebar-draft, #admin-sidebar-view {
   float:right;
 }
-
+.admin-box #upload_list_thumbnail img, 
+.admin-box #upload_thumbnail input{
+  max-width:100%;
+  padding: 15px 0;it 
+}
+div#drop-upload{
+  font-size: 13px;
+  margin-left: 0px;
+  color: #1e2221;
+  width: 100%;
+  padding: 1px;
+}
+div#drop-upload input{
+  font-size: 13px;
+}
+#markdown-help-img{
+  padding-right: 10px;
+  float: left;
+}
+#markdown-help-title{
+  margin: 1px;
+}
+#help-title{
+  margin-left: 35px;
+}

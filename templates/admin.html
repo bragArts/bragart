@@ -46,9 +46,14 @@
           </ul>
         </div>
     </div>
+    <div class="col-md-6">
+      <div id="aboutme" class="col admin-box"> <!--need to figure out how to make this work to edit about.html from admin panel-->
+        <h1>About Me<a href="{{ url_for("admin") }}" class="btn btn-primary">Save</a></h1>
+          <form action="{{ config.ABOUT_ME|safe  }}" method="POST">
+              <input name="title" id="post_title" type="text" size=30 placeholder="Type here to edit">
+          </form>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
 {% endblock %}
