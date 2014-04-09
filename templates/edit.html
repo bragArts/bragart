@@ -109,18 +109,14 @@
                     <pre><span></span><br></pre>
                     <!--begin post header-->
                     <div class="post_header">
-                      <textarea class="admin-box" id="post_title" name="post_title" placeholder="Title here" rows="1">
-                        {{ post.title }}
-                      </textarea>
+                      <textarea class="admin-box" id="post_title" name="post_title" placeholder="Title here" rows="1">{{ post.title }}</textarea>
                     </div>
                     <!--end post header-->
                     <br/>
                     <!--begin post content-->
                     <div class="expandingArea text-content" id="edit_post_area">
                       <pre><span></span><br></pre>
-                      <textarea cols="40" id="post_content" name="post_content" class="admin-box tabIndent" placeholder="Write post here" rows="20">
-                        {{ post.text }}
-                      </textarea>
+                      <textarea cols="40" id="post_content" name="post_content" class="admin-box tabIndent" placeholder="Write post here" rows="20">{{ post.text }}</textarea>
                     </div>
                     <!--end post content-->
                   </div>
@@ -174,9 +170,9 @@
                           <input type="file" onchange="uploadThumbnail(this.files[0])">
                       </div>
                       <div id="upload_list_thumbnail">
-                        {% if post.thumbnail %}
+                     
                         <p><a class='uploadUrl' target='_blank' href='{{ post.thumbnail }}'><img src='..{{ post.thumbnail }}' alt='thumbnail'/></a></p>
-                        {% endif %}
+
                       </div>
                       <span id="post_thumbnail" class="display:none; visibility:hidden"></span>
                       
