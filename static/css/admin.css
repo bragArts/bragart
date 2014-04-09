@@ -29,6 +29,9 @@ body {
   border-bottom: 1px solid #ddd; 
   background: none;
   line-height: 45px;}
+#admin #published, #admin #drafts {
+  padding: 20px;   
+}
 #admin #aboutme form {
   margin: 20px 0 10px -8px;
   padding: 0 0 0 20px;
@@ -45,11 +48,11 @@ body {
 #admin #published, #admin #drafts, #admin #aboutme, {
   padding: 20px;   
 }
-#admin #published ul, #admin #drafts ul, #admin #aboutme ul, {
+#admin #published ul, #admin #drafts ul{
   padding:0;
   list-style-type:none;
 }
-#admin #published ul li, #admin #drafts ul li, #admin #aboutme ul li, {
+#admin #published ul li, #admin #drafts ul li {
   border-bottom: 1px solid #ddd;
   padding: 15px;
   position: relative; }
@@ -57,7 +60,8 @@ body {
   color: #999; }
 #admin #published h2 a {
   margin-top: -2px; }
-#admin #published h1, #admin #drafts h1, #admin #aboutme h1, #admin #published h2, #admin #drafts h2, #admin #aboutme h2 {
+#admin #published h1, #admin #drafts h1, #admin #aboutme h1,
+#admin #published h2, #admin #drafts h2, #admin #aboutme h2 {
   position: relative;
   text-transform: uppercase; }
 #admin .col h1 a, #admin .col h2 a {
