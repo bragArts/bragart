@@ -54,7 +54,9 @@
           <ul class="nav navbar-nav">
             <li class="{% block work %}{% endblock %}"><a href="{{ url_for('index') }}">Work</a></li>
             <li class="{% block about %}{% endblock %}"><a href="{{ url_for('about') }}">About</a></li>
+            {% if config.GDOC_RESUME_EMBED_CODE %}
             <li class="{% block resume %}{% endblock %}"><a href="{{ url_for('resume') }}">Resume</a></li>
+            {% endif %}  
           </ul>
 		  <div class="navbar-right hidden-xs">
             {% if config.TWITTER_HANDLE %}

@@ -5,14 +5,7 @@
 {% block resume %}active{% endblock %}
 
 {% block content %}
-            {% if config.GDOC_RESUME_EMBED_CODE %}
         	    <div class="iframe-rwd">{{ config.GDOC_RESUME_EMBED_CODE|safe }}</div>
-            {% else %}<div class="jumbotron">
-                         <div class="container">
-                           <h1>Resume Goes Here</h1>
-                         </div>
-                       </div>
-            {% endif %}
 {% endblock %}
 
 
