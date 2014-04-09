@@ -146,4 +146,28 @@ textarea.admin-box#post_title {
 #admin-sidebar-draft, #admin-sidebar-view {
   float:right;
 }
-
+.admin-box #upload_list_thumbnail img, 
+.admin-box #upload_thumbnail input{
+  max-width:100%;
+  padding: 15px 0;it 
+}
+div#drop-upload{
+  font-size: 13px;
+  margin-left: 0px;
+  color: #1e2221;
+  width: 100%;
+  padding: 1px;
+}
+div#drop-upload input{
+  font-size: 13px;
+}
+#markdown-help-img{
+  padding-right: 10px;
+  float: left;
+}
+#markdown-help-title{
+  margin: 1px;
+}
+#help-title{
+  margin-left: 35px;
+}

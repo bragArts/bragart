@@ -61,7 +61,9 @@ function issueSaveAjax(id){
         type: "POST",
         url:"/admin/save/"+id,
         data: {title: $("#post_title").val(),
-               content: $("#post_content").val()}
+               content: $("#post_content").val(),
+               thumbnail: $("#post_thumbnail").text()
+              }
     });
 }
 
