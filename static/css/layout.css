@@ -20,6 +20,9 @@ code {
 .col-md-12 img {
   max-width:980px;
 }
+.container-fluid .navbar-right button {
+margin-top: 10px;
+}
 #admin textarea, #admin pre {
     margin: 0;
     padding: 0;
