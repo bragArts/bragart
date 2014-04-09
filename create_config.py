@@ -65,13 +65,15 @@ def input_password(*args, **kwargs):
     name, response = input_with_default(*args, _input_func=getpass.getpass, **kwargs)
     return name, generate_password_hash(response)
 
-
+  
 print "%s a config file for your portfolio. Change these settings to customize." % ("Updating" if "--update" in sys.argv else "Generating")
 SETTINGS = (
     input_with_default("SITE_TITLE", "Portfolio title", ""),
     input_with_default("SITE_GREETING", "Home page greeting", "Why hello there"),
     input_with_default("SITE_TAGLINE", "Portfolio tagline", ""),
     input_with_default("SITE_URL", "Portfolio root URL (e.g. /blog)", "/"),
+    input_with_default("DISPLAY_NAME", "Type your name to be displayed under About Me", "John Griswold"),
+    input_with_default("ABOUT_ME", "Type a few lines about yourself", "John works at IBM etc."),
     input_with_default("POSTS_PER_PAGE", "Projects per page", 14, _type=int),
     input_with_default("ADMIN_USERNAME", "Admin username", "admin"),
     input_password("ADMIN_PASSWORD", "Admin password", "password"),
@@ -82,7 +84,7 @@ SETTINGS = (
     input_with_default("TWITTER_HANDLE", "Twitter Handle", ""),
     input_with_default("FACEBOOK_PROFILE_URL", "Facebook Profile URL", ""), 
     input_with_default("CONTACT_EMAIL", "Contact Email", ""),
-    input_with_default("GDOC_RESUME_EMBED_CODE", "Google Doc Resume Embed Code", "", 
+    input_with_default("GDOC_RESUME_EMBED_CODE", "Google Doc Resume Embed Code", ""),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
     input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
