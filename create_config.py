@@ -87,9 +87,9 @@ SETTINGS = (
     input_with_default("GDOC_RESUME_EMBED_CODE", "Google Doc Resume Embed Code", ""),
     input_with_default("FONT_NAME", "Font Name (Selected from google font library): ", "Source Sans Pro",
                        lambda v: v.replace(" ", "+")),
-    input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32))),
-    input_with_default("USE_ADDTOANY", "Enable AddToAny integration", "y", lambda v: v.lower()[0] == "y"),
-    input_with_default("USE_SUBTOME", "Enable SubToMe integration", "n", lambda v: v.lower()[0] == "y"),
+    input_with_default("SECRET_KEY", "Secret key", b32encode(urandom(32)))
+    # input_with_default("USE_ADDTOANY", "Enable AddToAny integration", "y", lambda v: v.lower()[0] == "y"),
+    # input_with_default("USE_SUBTOME", "Enable SubToMe integration", "n", lambda v: v.lower()[0] == "y"),
 )
 
 with open("settings.py", "w") as fd:
