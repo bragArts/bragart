@@ -28,10 +28,12 @@ try:
 except ImportError:
     pygments = None
 
+# init Flask app
 app = Flask(__name__)
 app.config.from_object('settings')
 app.secret_key = app.config["SECRET_KEY"]
 
+# create upload folder for post imgs & thumbnail imgs
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -53,6 +55,7 @@ extensions = ['fenced_code', 'toc']
 if pygments is not None:
     extensions.append('codehilite')
 
+# turn our post markdown into html5
 MARKDOWN_PARSER = markdown.Markdown(extensions=extensions,
                                     output_format="html5")
 
@@ -68,7 +71,7 @@ if not app.debug:
     file_handler.setLevel(logging.ERROR)
     app.logger.addHandler(file_handler)
 
-
+# define Post class (aka our projects)
 class Post(db.Model):
     def __init__(self, title=None, created_at=None):
         if title:
@@ -102,15 +105,20 @@ class Post(db.Model):
         def remove_img_tags(data):
             p = re.compile(r'<img.*?>')
             return p.sub('', data)
-        #_cached = cache.get("post_%s" % self.id)
-        #if _cached is not None:
-        #return _cached
+        # taking out the caching for render_preview... otherwise 
+        # the caching in render_preview overwrites render_content for view.html
+        # and we lose all our imgs
+        #
+        # _cached = cache.get("post_%s" % self.id)
+        # if _cached is not None:
+        # return _cached
         preview_text = MARKDOWN_PARSER.convert(self.text)
         preview_text = preview_text[:150] + '...' #limit thumbnail text to 150 char
         preview_text = remove_img_tags(preview_text)
-        #cache.set("post_%s" % self.id, preview_text)
+        # cache.set("post_%s" % self.id, preview_text)
         return preview_text
     
+    # render HTML for thumbnail img on index.html
     def render_thumbnail(self):
         if self.thumbnail:
           thumbnailHTML = "<img src='" + self.thumbnail + "' alt='...'>"
@@ -120,7 +128,7 @@ class Post(db.Model):
 
     def set_content(self, content):
         cache.delete("post_%s" % self.id)
-        cache.delete("rss_feed")
+        # cache.delete("rss_feed")
 
         self.text = content
 
@@ -181,24 +189,29 @@ def index():
                            current_page=page, 
                            is_admin=is_admin())
   
+# ABOUT: a few sentences describing you and what you do  
 @app.route("/about")
 def about():
     page = request.args.get("page", 0, type=int)
     return render_template("about.html", current_page=page, is_admin=is_admin())
-  
+
+# RESUME: an embedded iframe for showing off your resume in a Google Drive doc
 @app.route("/resume")
 def resume():
     page = request.args.get("page", 0, type=int)
     return render_template("resume.html", current_page=page, is_admin=is_admin())
 
+# 404 ERROR PAGE
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html', now=datetime.datetime.now(), is_admin=is_admin()), 404
-    
+   
+# 500 ERROR PAGE
 @app.errorhandler(500)
 def page_error(e):
     return render_template('500.html', now=datetime.datetime.now(), is_admin=is_admin()), 500
 
+# VIEW_POST
 @app.route("/<int:post_id>")
 def view_post(post_id):
     """ view_post renders a post and returns the Response object """
@@ -210,7 +223,7 @@ def view_post(post_id):
     
     return render_template("view.html", post=post, is_admin=is_admin(), preview=False)
 
-
+# VIEW POST: renders the project post at its slug URL
 @app.route("/<slug>")
 def view_post_slug(slug):
     
@@ -223,6 +236,7 @@ def view_post_slug(slug):
     return render_template("view.html", post=post, pid=pid, is_admin=is_admin(), preview=False)
 
 
+# NEW POST
 @app.route("/new", methods=["POST", "GET"])
 @requires_authentication
 def new_post():
@@ -234,7 +248,7 @@ def new_post():
 
     return redirect(url_for("edit", post_id=post.id))
 
-
+# EDIT POST
 @app.route("/edit/<int:post_id>", methods=["GET", "POST"])
 @requires_authentication
 def edit(post_id):
@@ -268,7 +282,7 @@ def edit(post_id):
         db.session.commit()
         return redirect(url_for("edit", post_id=post_id))
 
-
+# DELETE POST
 @app.route("/delete/<int:post_id>", methods=["GET", "POST"])
 @requires_authentication
 def delete(post_id):
@@ -281,12 +295,13 @@ def delete(post_id):
         db.session.delete(post)
         db.session.commit()
 
-    cache.delete("rss_feed")
+    # cache.delete("rss_feed")
 
     return redirect(request.args.get("next", "")
                     or request.referrer or url_for('index'))
 
 
+# ADMIN DASHBOARD
 @app.route("/admin", methods=["GET", "POST"])
 @requires_authentication
 def admin():
@@ -296,7 +311,7 @@ def admin():
         .order_by(Post.created_at.desc()).all()
     return render_template("admin.html", drafts=drafts, posts=posts, adminName=app.config["ADMIN_USERNAME"]) #Added username for extra friendliness
 
-
+# SAVE POST
 @app.route("/admin/save/<int:post_id>", methods=["POST"])
 @requires_authentication
 def save_post(post_id):
@@ -320,7 +335,7 @@ def save_post(post_id):
     db.session.commit()
     return jsonify(success=True, update=content_changed)
 
-
+# PREVIEW DRAFT POST
 @app.route("/preview/<int:post_id>")
 @requires_authentication
 def preview(post_id):
@@ -336,7 +351,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-
+# UPLOAD IMG FILE
 @app.route("/upload", methods=["POST"])
 @requires_authentication
 def upload_file():
@@ -352,7 +367,7 @@ def upload_file():
             return json.dumps({'status': 'ok', 'url': url, 'name': filename})
     return 'ok'
             
-
+# UPLOADED IMG FILE
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     resp = send_from_directory(app.config['UPLOAD_FOLDER'],
@@ -362,22 +377,22 @@ def uploaded_file(filename):
         time.mktime(dt.timetuple())
     )
     return resp
+  
+# Disabled, since RSS isn't necessary for a blog
+#@app.route("/posts.rss")
+#def feed():
+#    rendered = cache.get("rss_feed")
+#    if rendered is None:
+#        posts = db.session.query(Post)\
+#            .filter_by(draft=False)\
+#            .order_by(Post.created_at.desc())\
+#            .limit(10).all()
+#        rendered = render_template('index.xml', posts=posts)
+#        cache.set("rss_feed", rendered)
 
-
-@app.route("/posts.rss")
-def feed():
-    rendered = cache.get("rss_feed")
-    if rendered is None:
-        posts = db.session.query(Post)\
-            .filter_by(draft=False)\
-            .order_by(Post.created_at.desc())\
-            .limit(10).all()
-        rendered = render_template('index.xml', posts=posts)
-        cache.set("rss_feed", rendered)
-
-    response = make_response(rendered)
-    response.mimetype = "application/xml"
-    return response
+#    response = make_response(rendered)
+#    response.mimetype = "application/xml"
+#    return response
 
 
 def slugify(text, delim=u'-'):
