@@ -24,6 +24,7 @@ bragart is built on Simple--a light weight Flask-based blog app--and designed sp
   - Download Python 2.7+
   - Clone this repository: `git clone https://github.com/bragArts/bragart.git`
   - From your shiny new repository, run: `pip install -r requirements.txt`
+  - (Optional) Create your resume in a Google Drive doc. Later you can embed that document in your portfolio if you so choose.
   - Create a new settings file using: `python create_config.py`
   - See your new portfolio in action: `python bragart.py`
   - Visit your admin dashboard to create your first project post at /admin
