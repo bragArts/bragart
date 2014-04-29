@@ -20,8 +20,6 @@ bragart is built on Simple--a light weight Flask-based blog app--and designed sp
   - Vanilla Bootstrap 3 responsive interface
   - Lightweight admin UI for project post creation and updating
 
-***
-
 ### Installation
   - Download Python 2.7+
   - Clone this repository: `git clone https://github.com/bragArts/bragart.git`
@@ -33,4 +31,26 @@ bragart is built on Simple--a light weight Flask-based blog app--and designed sp
 #### Updating
 If you need to start over with your settings, just run `python create_config.py --fresh`
 
-#### Contributing
+***
+
+## Contributing
+
+Want to help us out? That's swell. All skill levels are appreciated. Tackle something from the list below, or head
+over to milestones &amp; issues to see what else needs to be done.
+
+Here's a list of improvements we'd like to make in the near future.
+
+#### Edit about page through admin UI
+It'd be nice to allow people to edit their about page content through the admin UI. We have a static box in 
+the UI just waiting to be hooked up. It looks pretty, but right now it doesn't do anything.
+
+#### Responsive optimization
+Currently, bragart out of the box looks pretty ok on smaller devices. But Bootstrap packs a lot of responsive power, 
+and our mobile designs could be better.
+
+#### Sorting projects by category
+We'd like to get some taxonomy for our projects by adding the ability to assign each project to a category (like
+Web Design, Python, Wireframes, whatever floats your professional boat). Ideally, this would allow 
+the projects to be sorted by category on the front page of the portfolio.
+
+####
