@@ -39,7 +39,7 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['USE_FAVICON'] =  os.path.exists(os.path.join(app.static_folder, "favicon.ico"))
 
-
+# work some sqlalchemy magic
 db = SQLAlchemy(app)
 cache_directory = os.path.dirname(__file__)
 try:
@@ -59,6 +59,7 @@ if pygments is not None:
 MARKDOWN_PARSER = markdown.Markdown(extensions=extensions,
                                     output_format="html5")
 
+# enable logging
 if not app.debug:
     import logging
     if not os.path.exists("logs"):
@@ -90,7 +91,7 @@ class Post(db.Model):
     views = db.Column(db.Integer(), default=0)
     created_at = db.Column(db.DateTime, index=True)
     updated_at = db.Column(db.DateTime)
-    thumbnail = db.Column(db.String(), default="") 
+    thumbnail = db.Column(db.String(), default="") # url string to be our thumbnail
 
     def render_content(self):
         _cached = cache.get("post_%s" % self.id)
@@ -141,6 +142,7 @@ try:
 except Exception:
     pass
 
+# check admin status
 def is_admin():
     auth = request.authorization
     if not auth or not (auth.username == app.config["ADMIN_USERNAME"]
