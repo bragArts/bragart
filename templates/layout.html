@@ -15,7 +15,6 @@
       {% if config.USE_FAVICON %}
       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
       {% endif %}
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ url_for('feed') }}">
       <link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet" media="screen">
       <link href="{{ url_for('static', filename='css/code_styles.css') }}" rel="stylesheet" type="text/css">
       <link href='//fonts.googleapis.com/css?family={{ config.FONT_NAME|replace(' ','+') }}:400,900' rel='stylesheet' type='text/css'>
@@ -92,15 +91,20 @@
         	  <a href="https://twitter.com/{{ config.TWITTER_HANDLE }}/">Twitter</a>
             {% endif %}
             {% if config.GOOGLE_PLUS_PROFILE %}
-            <a href="https://plus.google.com/{{ config.GOOGLE_PLUS_PROFILE }}/posts">G+</a>
+            <a href="https://plus.google.com/{{ config.GOOGLE_PLUS_PROFILE }}/posts">Google +</a>
             {% endif %}
-            <a href="">Linked in</a> <!--KLM need to add support for linkedin-->
+            {% if config.LINKEDIN_PROFILE_URL %}
+            <a href="http://{{ config.LINKEDIN_PROFILE_URL }}">LinkedIn</a>
+            {% endif %}
+            {% if config.FACEBOOK_PROFILE_URL %}
+            <a href="http://{{ config.FACEBOOK_PROFILE_URL }}">Facebook</a>
+            {% endif %}
             {% if config.CONTACT_EMAIL %}
             <a href="mailto:{{ config.CONTACT_EMAIL }}?subject:Howdy">Email</a>
             {% endif %}
             {% if config.GITHUB_USERNAME %}
             <a href="https://github.com/{{ config.GITHUB_USERNAME }}/">Github</a>
-            {% endif %}s
+            {% endif %}
         </div>
         </div><!--/.navbar-collapse -->
             

@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block head %}
+    <script src="{{ url_for('static', filename='js/functions.js') }}" type="text/javascript"></script>
 		<script src="{{ url_for('static', filename='js/tabindent.js') }}" type="text/javascript"></script>
         <script>
             window.ondragover = function(e) {e.preventDefault()};
@@ -28,44 +29,59 @@
                     xhr.send(fd);
                 })
             }
+          //thumbnail images get special treatment: there can be only one
+          function uploadThumbnail(files) {
+            $(files).each(function(i,file){
+                    if (!file || !file.type.match(/image.*/)) return;
 
+                    var fd = new FormData();
+                    fd.append("file", file);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/upload");
+                    xhr.onload = function() {
+                        console.log(xhr.responseText);
+                        var resp = JSON.parse(xhr.responseText);
+                      $("#upload_list_thumbnail").html("<p><a class='uploadUrl' target='_blank' href='" + resp.url + "'><img src='" + resp.url + "' alt='" + resp.name + "'/></a></p>");
+                      $("#post_thumbnail").append(resp.url);
+                    };
+                    xhr.send(fd);
+                })
+          }
             $(document).ready(function(){
-                console.log('doc ready');
                 $("#upload_list").on('click', '.uploadUrl', function(ev){
-                  console.log('clicked!');
                     $('#post_content').insertAtCaret('![](' + $(this).attr('href') + ')');
                     ev.preventDefault();
                 })
+
             })
 
              jQuery.fn.extend({
-insertAtCaret: function(myValue){
-  return this.each(function(i) {
-    if (document.selection) {
-      //For browsers like Internet Explorer
-      this.focus();
-      sel = document.selection.createRange();
-      sel.text = myValue;
-      this.focus();
-    }
-    else if (this.selectionStart || this.selectionStart == '0') {
-      //For browsers like Firefox and Webkit based
-      var startPos = this.selectionStart;
-      var endPos = this.selectionEnd;
-      var scrollTop = this.scrollTop;
-      this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
-      this.focus();
-      this.selectionStart = startPos + myValue.length;
-      this.selectionEnd = startPos + myValue.length;
-      this.scrollTop = scrollTop;
-    } else {
-      this.value += myValue;
-      this.focus();
-    }
-  })
-}
-});
-
+              insertAtCaret: function(myValue){
+                return this.each(function(i) {
+                  if (document.selection) {
+                    //For browsers like Internet Explorer
+                    this.focus();
+                    sel = document.selection.createRange();
+                    sel.text = myValue;
+                    this.focus();
+                  }
+                  else if (this.selectionStart || this.selectionStart == '0') {
+                    //For browsers like Firefox and Webkit based
+                    var startPos = this.selectionStart;
+                    var endPos = this.selectionEnd;
+                    var scrollTop = this.scrollTop;
+                    this.value = this.value.substring(0, startPos)+myValue+this.value.substring(endPos,this.value.length);
+                    this.focus();
+                    this.selectionStart = startPos + myValue.length;
+                    this.selectionEnd = startPos + myValue.length;
+                    this.scrollTop = scrollTop;
+                  } else {
+                    this.value += myValue;
+                    this.focus();
+                  }
+                })
+              }
+              });
         </script>
 
 
@@ -81,30 +97,6 @@ insertAtCaret: function(myValue){
         </script>
     {% endif %}
 
-
-        <style>
-        div#drop-upload{
-            font-size: 13px;
-            margin-left: 0px;
-            color: #1e2221;
-            width: 100%;
-            padding: 1px;
-        }
-        div#drop-upload input{
-            font-size: 13px;
-        }
-        #markdown-help-img{
-            padding-right: 10px;
-            float: left;
-        }
-        #markdown-help-title{
-            margin: 1px;
-        }
-        #help-title{
-            margin-left: 35px;
-        }
-    </style>
-
 {% endblock %}
 
 
@@ -117,18 +109,14 @@ insertAtCaret: function(myValue){
                     <pre><span></span><br></pre>
                     <!--begin post header-->
                     <div class="post_header">
-                      <textarea class="admin-box" id="post_title" name="post_title" placeholder="Title here" rows="1">
-                        {{ post.title }}
-                      </textarea>
+                      <textarea class="admin-box" id="post_title" name="post_title" placeholder="Title here" rows="1">{{ post.title }}</textarea>
                     </div>
                     <!--end post header-->
                     <br/>
                     <!--begin post content-->
                     <div class="expandingArea text-content" id="edit_post_area">
                       <pre><span></span><br></pre>
-                      <textarea cols="40" id="post_content" name="post_content" class="admin-box tabIndent" placeholder="Write post here" rows="20">
-                        {{ post.text }}
-                      </textarea>
+                      <textarea cols="40" id="post_content" name="post_content" class="admin-box tabIndent" placeholder="Write post here" rows="20">{{ post.text }}</textarea>
                     </div>
                     <!--end post content-->
                   </div>
@@ -166,7 +154,7 @@ insertAtCaret: function(myValue){
                         </div>
                       </div>
                       <br/>
-                      <div id="drop-upload" class=" well well-small" style="word-wrap: break-word;">
+                      <div id="drop-upload" class="well well-small" style="word-wrap: break-word;">
                                 Drag files here to upload. Click to insert.
                                 <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
                                 <div id="upload_list"></div>
@@ -178,6 +166,16 @@ insertAtCaret: function(myValue){
                     <!--thumbnail admin box-->
                     <div class="admin-box">
                       <h3>Thumbnail image</h3>
+                      <div id="upload-thumbnail">
+                          <input type="file" onchange="uploadThumbnail(this.files[0])">
+                      </div>
+                      <div id="upload_list_thumbnail">
+                     
+                        <p><a class='uploadUrl' target='_blank' href='{{ post.thumbnail }}'><img src='..{{ post.thumbnail }}' alt='thumbnail'/></a></p>
+
+                      </div>
+                      <span id="post_thumbnail" class="display:none; visibility:hidden"></span>
+                      
                     </div>
                   </div>
                   <!--end col-md-3-->
