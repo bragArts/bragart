@@ -24,10 +24,10 @@ try:
 except (ImportError, SyntaxError):
     settings = None
 
-
+#Inputs default values from command line if none specified
 def input_with_default(*args, **kwargs):
     _type = kwargs.pop("_type", None)
-
+    
     name, res = _input_with_default(*args, **kwargs)
 
     if _type is None:
@@ -38,7 +38,7 @@ def input_with_default(*args, **kwargs):
         except ValueError:
             print "Error: Value %s is not the correct type. Please re-enter" % res
             return input_with_default(*args, _type=_type, **kwargs)
-
+            #prints an error to the user if incorrect value entered
 
 def _input_with_default(name, prompt, default, func=lambda v: v, _input_func=raw_input):
     """ Small wrapper around raw_input for prompting and defaulting """
@@ -91,7 +91,7 @@ SETTINGS = (
     # input_with_default("USE_ADDTOANY", "Enable AddToAny integration", "y", lambda v: v.lower()[0] == "y"),
     # input_with_default("USE_SUBTOME", "Enable SubToMe integration", "n", lambda v: v.lower()[0] == "y"),
 )
-
+#Writes the inputs to the settings file
 with open("settings.py", "w") as fd:
     fd.write("# -*- coding: utf-8 -*-\n")
     for name, value in SETTINGS:
