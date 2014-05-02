@@ -150,7 +150,7 @@ def is_admin():
         return False
     return True
 
-
+# authenication error if not admin
 def requires_authentication(func):
     """ function decorator for handling authentication """
     @wraps(func)
