@@ -32,7 +32,6 @@ bragart is built on Simple--a light weight Flask-based blog app--and designed sp
 #### Updating
 If you need to start over with your settings, just run `python create_config.py --fresh`
 
-***
 
 ## Contributing
 
@@ -53,5 +52,3 @@ and our mobile designs could be better.
 We'd like to get some taxonomy for our projects by adding the ability to assign each project to a category (like
 Web Design, Python, Wireframes, whatever floats your professional boat). Ideally, this would allow 
 the projects to be sorted by category on the front page of the portfolio.
-
-####
