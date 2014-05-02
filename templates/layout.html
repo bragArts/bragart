@@ -57,7 +57,7 @@
             <li class="{% block resume %}{% endblock %}"><a href="{{ url_for('resume') }}">Resume</a></li>
             {% endif %}  
           </ul>
-		  <div class="navbar-right hidden-xs">
+		  <div class="navbar-right hidden-xs"><!--Social Media Buttons-->
             {% if config.TWITTER_HANDLE %}
         	  <a href="https://twitter.com/{{ config.TWITTER_HANDLE }}/">
               <img alt="twitter" src="{{ url_for('static', filename='img/twitter.png') }}"/></a>
@@ -86,7 +86,7 @@
         <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='{{ url_for('admin') }}'">Admin</button>
             {% endif %}
         </div>
-        <div class="navbar-right visible-xs">
+        <div class="navbar-right visible-xs"><!--Social Media Buttons-->
             {% if config.TWITTER_HANDLE %}
         	  <a href="https://twitter.com/{{ config.TWITTER_HANDLE }}/">Twitter</a>
             {% endif %}
